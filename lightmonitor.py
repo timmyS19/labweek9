@@ -3,7 +3,7 @@ import paho.mqtt.client as mqtt
 class LightMonitor:
     """Follows one station's light topic; remembers the latest reading."""
     def __init__(self, broker, station):
-        self.topic    = f"bench/{station}/light"
+        self.topic    = f"vanier/iot/{station}/light"
         self.last_pct = None
         self.count    = 0
         self.client   = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
@@ -21,4 +21,4 @@ class LightMonitor:
     def run(self):
         self.client.loop_forever()
 if __name__ == "__main__":
-    LightMonitor("localhost", "s07").run()
+    LightMonitor("localhost", "s01").run()
